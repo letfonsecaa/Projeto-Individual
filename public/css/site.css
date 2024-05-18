@@ -205,8 +205,6 @@ span {
     height: 500px;
     display: flex;
     border: 1px solid #000 ;
- 
-
 }
 
 .titulo-saiba-mais {
@@ -336,6 +334,7 @@ span {
     display: flex;
     justify-content: space-around;
     padding-top: 30px;
+    padding: 50px;
 
 }
 
@@ -346,7 +345,7 @@ span {
     border-radius: 30px;
     text-align: center;
     padding-top: 60px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px var(--cinza-basico);
     /* Sombra para efeito visual */
     transition: transform 0.3s ease;
     /* Transição suave de 0.3 segundos */
@@ -376,17 +375,91 @@ span {
     font-weight: 400;
 }
 
+.container-sobre-mim {
+    width: 1526px;
+    height: 550px;
+    display: flex;
+    border: 1px solid #000 ;
+}
 
+.titulo-sobre-mim{
+    color: #CF96DF;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 70px;
+    padding-top: 30px;
+}
 
+.texto-sobre-mim {
+    
+    width: 750px;
+    height: 355px;
+    padding-left: 50px;
+    text-align: justify;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+}
 
+.img-perfil  {
+    width: 416px;
+    height: 432px;
+    border-radius: 50px;
+}
 
+.div-img-perfil {
+    padding-top: 50px;
+    padding-left: 150px;
+}
 
+.container-fale-comigo {
+    width: 1526px;
+    height: 830px;
+    border: 1px solid #000 ;
+    text-align: center;
+}
 
+.titulo-fale-comigo {
+    color: #CF96DF;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 70px;
+    padding-top: 30px;
+    text-align: center;
+}
 
+h4 {
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    
+}
 
+.container-inputs .container-fale-comigo {
+    width: 560px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  
+}
 
+.container-inputs {
+    text-align: start;
+}
 
+input {
 
+    width: 560px;
+    height: 48px;
+    border: 2px solid #CF96DF;
+    box-shadow: 0px 0px 10px var(--cinza-basico);
+}
+
+.input_mensagem {
+    width: 560px;
+    height: 180px;
+}
 
 
 ::-webkit-scrollbar {
