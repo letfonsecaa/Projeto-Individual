@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Let Curly | Cadastro</title>
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="./css/cadastro.css">
+  <link rel="shortcut icon" href="./img/Logo_Let_Curly-removebg-preview.png" type="image/x-icon">
+</head>
+
+<body>
+  <div class="header">
+    <div class="container">
+      <a href="index.html"> <img class="img-logo" src="./img/Logo_Let_Curly-removebg-preview.png"></a>
+      <ul class="navbar">
+        <a href="index.html">
+          <li>Home</li>
+        </a>
+        <a href="index.html">
+          <li>Saiba mais</li>
+        </a>
+        <a href="index.html">
+          <li>Sobre mim</li>
+        </a>
+        <a href="index.html">
+          <li>Fale comigo</li>
+        </a>
+      </ul>
+    </div>
+    <div class="cadastroSucesso" id="cadastroSucesso">
+      <p>Cadastro realizado com sucesso!</p>
+      <span>Faça login para continuar</span>
+    </div>
+  </div>
+  <div class="container-principal">
+    <img class="img-logo-tela" src="./img/Logo_Let_Curly__1_-removebg-preview.png" alt="">
+    <div id="card-erro" class="card-erro">
+      <p id="mensagem-erro" class="mensagem-erro"></p>
+    </div>
+    <div class="container-cadastro">
+      <h1>Seja Bem-Vindo</h1>
+      <div class="container-inputs">
+        <p>Nome</p><input type="text" id="input_nome" class="input"><br><br>
+        <p>Email</p><input type="text" id="input_email" class="input"><br><br>
+        <p>Senha</p><input type="text" id="input_senha" class="input"><br><br>
+        <p>Confirmação de Senha</p><input type="text" id="input_confirma_senha" class="input">
+      </div>
+      <button class="button-cadastro" onclick="cadastrar()">Cadastrar</button>
+      <div class="container-tem-conta">
+        <h4>Tem uma conta?</h4><br><a href="login.html"><button class="button-entre">Entre</button></a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+
+<script>
+  function cadastrar() {
+
+    // criando variáveis para receber os valores das inputs
+    const nomeVar = document.getElementById("input_nome").value;
+    const emailVar = document.getElementById("input_email").value;
+    const senhaVar = document.getElementById("input_senha").value;
+    const confirmSenhaVar = document.getElementById("input_confirma_senha").value;
+
+    // criando váriaveis de verificação com REGEX
+    let regexMaiuscula = /[A-Z]/;
+    let regexMinuscula = /[a-z]/;
+
+    // criando variáveis auxiliares para validação dos campos
+    let senhaValidaRegex = false;
+    let senhaValidaNumeros = false;
+    let senhaValida = false;
+    let confirmSenhaValida = false;
+    let nomeValido = false;
+    let emailValido = false;
+
+    // criando variáveis de mensagens
+
+    let camposVazios = "Preencha todos os campos"
+    let mensagemErroNome = "O nome deve conter pelo menos três caracteres.";
+
+    let mensagemEmailInvalido = `Insira um email válido<br>Ex: leticia@gmail.com`;
+
+
+    let mensagemSenhaInvalida = `A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, 
+  uma letra minúscula, um caracter numérico e pelo menos um caracter especial <br> (@, #, %, *, ?, $, &, !, -, /).`;
+
+    let mensagemErroConfirmSenha = "As senhas devem ser iguais.";
+
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmSenhaVar == "") {
+      document.getElementById("card-erro").style.display = 'block';
+      document.getElementById("mensagem-erro").innerHTML = camposVazios;
+    } else {
+
+      /* ------------------- VERIFICAÇÃO DE NOME ------------------ */
+
+      if (nomeVar.length >= 3) {
+        nomeValido = true;
+      } else {
+        document.getElementById("card-erro").style.display = 'block';
+        document.getElementById("mensagem-erro").innerHTML = mensagemErroNome;
+      }
+
+
+
+      /* ------------------ VERIFICAÇÃO DE SENHA ----------------------- */
+
+      // testando se os valores da variavel 'senha' contém os valores aceitos pelos REGEX
+      if (
+        regexMaiuscula.test(senhaVar) &&
+        regexMinuscula.test(senhaVar) &&
+        senhaVar.length >= 8
+      ) {
+        senhaValidaRegex = true;
+      } else {
+        document.getElementById("card-erro").style.display = 'block';
+        document.getElementById("mensagem-erro").innerHTML =
+          mensagemSenhaInvalida;
+      }
+
+      // verificando se existem números na senha
+
+      for (let contador = 0; contador <= 9; contador++) {
+        if (senhaVar.indexOf(`${contador}`) > -1) {
+          senhaValidaNumeros = true;
+        }
+      }
+
+      // caso a senha passe no teste de REGEX e números e caracteres especiais */
+      if (senhaValidaRegex && senhaValidaNumeros && (senhaVar.indexOf('@') >= 0 ||
+        senhaVar.indexOf('#') >= 0 || senhaVar.indexOf('$') >= 0 ||
+        senhaVar.indexOf('%') >= 0 || senhaVar.indexOf('&') >= 0 ||
+        senhaVar.indexOf('*') >= 0 || senhaVar.indexOf('!') >= 0 ||
+        senhaVar.indexOf('?') >= 0 || senhaVar.indexOf('-') >= 0 || senhaVar.indexOf('()') >= 0 || senhaVar.indexOf('/') >= 0)) {
+        senhaValida = true;
+      } else {
+        document.getElementById("card-erro").style.display = 'block';
+        document.getElementById("mensagem-erro").innerHTML = mensagemSenhaInvalida;
+      }
+
+
+
+
+
+
+      /* ------------------ VERIFICAÇÃO DESCONFIRMAÇÃO DE SENHA ----------------------- */
+
+      if (confirmSenhaVar != senhaVar) {
+        document.getElementById("card-erro").style.display = 'block';
+        document.getElementById("mensagem-erro").innerHTML =
+          mensagemErroConfirmSenha;
+      } else {
+        confirmSenhaValida = true;
+      }
+
+      /* ------------------------------ CONFIRMAÇÃO DE EMAIL ------------------------------- */
+
+      if (
+        emailVar.indexOf("@") > 0 &&
+        (emailVar.indexOf(".com") > emailVar.indexOf("@") || emailVar.indexOf("sptech.school") > emailVar.indexOf("@")) && (
+          emailVar.indexOf("gmail") > emailVar.indexOf("@") ||
+          emailVar.indexOf("hotmail") > emailVar.indexOf("@") ||
+          emailVar.indexOf("outlook") > emailVar.indexOf("@"))
+      ) {
+        emailValido = true;
+      } else {
+        document.getElementById("card-erro").style.display = 'block';
+        document.getElementById("mensagem-erro").innerHTML =
+          mensagemEmailInvalido;
+      }
+    }
+
+    /*  Confirmação de tudo */
+
+    if (nomeValido && emailValido && senhaValida && confirmSenhaValida) {
+      document.getElementById("card-erro").style.display = 'none';
+      document.getElementById("cadastroSucesso").style.display = "flex";
+      document.getElementById("cadastroSucesso").style.animation =
+        "cadastroComSucesso";
+      document.getElementById("cadastroSucesso").style.animationDuration = "5s";
+
+      setTimeout(
+        () =>
+          (document.getElementById("cadastroSucesso").style.display = "none"),
+        4900,
+      );
+    }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        confirmSenhaServer: confirmSenhaVar,
+
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+          cadastroSucesso.style.display = "block";
+
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+
+  function sumirMensagem() {
+    cardErro.style.display = "none";
+  }
+</script>

@@ -1,11 +1,3 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
 create database if not exists letcurly;
 use letcurly;
 
@@ -35,7 +27,6 @@ fk_questao int,
 foreign key (fk_usuario) references usuario(idUsuario),
 foreign key (fk_questao) references questao(idQuestao)
 );
-
 
 
 insert into usuario
@@ -126,3 +117,8 @@ select u.idUsuario, COUNT(*) as total_pontos
 from resposta_usuario ru inner join usuario u on ru.fk_usuario = u.idUsuario
 where correta = true
 group by idUsuario;
+
+
+
+
+
