@@ -39,6 +39,7 @@
     position: fixed;
     top: 0;
     width: 100%;
+    height: 130px;
     z-index: 1000;
 
 }
@@ -64,7 +65,7 @@
     transform: translateX(-50%);
     width: 0;
     height: .1875rem;
-    background-color:#CF96DF;
+    background-color: #CF96DF;
     transition: width 0.3s ease-in-out;
 }
 
@@ -91,8 +92,8 @@ a:hover {
 }
 
 .img-logo {
-    width: 136px;
-    height: 104px;
+    width: 135px;
+    height: 125px;
     transition: transform 0.3s ease;
     /* Transição suave de 0.3 segundos */
 }
@@ -204,7 +205,7 @@ span {
     width: 1526px;
     height: 500px;
     display: flex;
-    border: 1px solid #000 ;
+    border: 1px solid #000;
 }
 
 .titulo-saiba-mais {
@@ -226,14 +227,14 @@ span {
     font-size: 20px;
 }
 
- .slider-objetivos-ONU {
+.slider-objetivos-ONU {
     margin: 0 auto;
     width: 400px;
     height: 410px;
     overflow: hidden;
     font-family: "Noto Serif", serif;
     padding-top: 115px;
-    padding-left: 100px; 
+    padding-left: 100px;
 }
 
 .slides {
@@ -241,11 +242,12 @@ span {
     height: 300px;
     display: flex;
 }
+
 .slides input {
     display: none;
 }
 
-.slide{
+.slide {
     width: 100%;
     position: relative;
 }
@@ -286,47 +288,50 @@ span {
     background-color: #fff;
 }
 
-#radio1:checked ~ .first{
+#radio1:checked~.first {
     margin-left: 0;
 }
 
-#radio2:checked ~ .first{
+#radio2:checked~.first {
     margin-left: -90%;
-    margin-right: 25%; 
+    margin-right: 25%;
 }
 
-#radio3:checked ~ .first{
+#radio3:checked~.first {
     margin-left: -200%;
 }
 
 
-.navigation-auto div{
+.navigation-auto div {
     border: 2px solid #fff;
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
-    transition: 1s; 
+    transition: 1s;
 }
-.navigation-auto{
+
+.navigation-auto {
     position: absolute;
     width: 300px;
-    margin-top:270px;
+    margin-top: 270px;
     display: flex;
     justify-content: center;
 
 }
 
-.navigation-auto div:not(:last-child){
+.navigation-auto div:not(:last-child) {
     margin-right: 40px;
 }
 
-#radio1:checked ~ .navigation-auto .auto-btn1{
+#radio1:checked~.navigation-auto .auto-btn1 {
     background-color: #fff;
 }
-#radio2:checked ~ .navigation-auto .auto-btn2{
+
+#radio2:checked~.navigation-auto .auto-btn2 {
     background-color: #fff;
 }
-#radio3:checked ~ .navigation-auto .auto-btn3{
+
+#radio3:checked~.navigation-auto .auto-btn3 {
     background-color: #fff;
 }
 
@@ -345,6 +350,7 @@ span {
     border-radius: 30px;
     text-align: center;
     padding-top: 60px;
+    cursor: pointer;
     box-shadow: 0px 0px 10px var(--cinza-basico);
     /* Sombra para efeito visual */
     transition: transform 0.3s ease;
@@ -379,10 +385,10 @@ span {
     width: 1526px;
     height: 550px;
     display: flex;
-    border: 1px solid #000 ;
+    border: 1px solid #000;
 }
 
-.titulo-sobre-mim{
+.titulo-sobre-mim {
     color: #CF96DF;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
@@ -391,7 +397,7 @@ span {
 }
 
 .texto-sobre-mim {
-    
+
     width: 750px;
     height: 355px;
     padding-left: 50px;
@@ -401,7 +407,7 @@ span {
     font-size: 20px;
 }
 
-.img-perfil  {
+.img-perfil {
     width: 416px;
     height: 432px;
     border-radius: 50px;
@@ -415,7 +421,6 @@ span {
 .container-fale-comigo {
     width: 1526px;
     height: 830px;
-    border: 1px solid #000 ;
     text-align: center;
 }
 
@@ -432,35 +437,112 @@ h4 {
     text-align: center;
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    
+
 }
 
-.container-inputs .container-fale-comigo {
-    width: 560px;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  
-}
 
 .container-inputs {
-    text-align: start;
+    width: 560px;
+    height: 450px;
+    flex-direction: column;
+    padding-left: 500px;
+
 }
 
-input {
 
+input {
     width: 560px;
     height: 48px;
     border: 2px solid #CF96DF;
     box-shadow: 0px 0px 10px var(--cinza-basico);
 }
 
+.input_mensagem::placeholder {
+    position: absolute;
+    margin: 5px;
+    top: 0;
+    left: 0;
+}
+
 .input_mensagem {
     width: 560px;
     height: 180px;
+    
+
 }
 
+p {
+    padding-left: 15px;
+    padding: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+footer {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: .0006rem solid #000;
+}
+
+.img-logo-footer  {
+    width: 135px;
+    height:125px;
+}
+
+.footer-escrito {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    margin-right: 500px;
+}
+
+.footer-navbar {
+    width: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    color: black;
+}
+
+li {
+    font-family: "Dancing Script", cursive;
+    font-size: 20px;
+    font-weight: 1000;
+    font-style: normal;
+}
+
+.container-final {
+    width: 1526px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    border: #000;
+}
+
+.img-redes-sociais {
+    width: 24px;
+    height: 24px;
+}
+
+.container-img-redes-sociais {
+    width: 167px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.horizontal-line {
+    border: none;
+    border-top: 1px solid #000; 
+    width: 90%; 
+    margin-top: 10px;
+    padding: 10px;
+}
 
 ::-webkit-scrollbar {
     width: .625rem;
@@ -469,12 +551,13 @@ input {
 
 /* Estilos para a alça da barra de rolagem */
 ::-webkit-scrollbar-thumb {
-    background-color: #CF96DF;
+    background-color: var(--cinza-basico);
     /* cor da alça */
     border-radius: .625rem;
     /* borda arredondada */
 }
+
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--cinza-basico);
+    background-color: #CF96DF;
     /* cor da alça quando passa o mouse por cima */
 }

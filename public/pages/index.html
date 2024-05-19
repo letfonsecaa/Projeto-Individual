@@ -30,8 +30,8 @@
                 </a>
             </ul>
             <div class="header-button">
-                <button class="button-login"> Login </button>
-                <button>Cadastre-se</button>
+                <a href="login.html"><button class="button-login"> Login </button></a>
+                <a href="cadastro.html"><button>Cadastre-se</button></a>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
         </divid>
         <div class="container-frase-principal">
             <h1><span>Aprenda a</span> amar <span>e</span><br>cuidar <span>dos seus</span><br>cachos</h1>
-            <div class="home-botao"> <button class="botao-home">Cadastre-se</button></div>
+            <div class="home-botao"> <a href="cadastro.html"><button class="botao-home">Cadastre-se</button></a> </div>
         </div>
         <div class="home-img"><img src="../img/Logo_Let_Curly__1_-removebg-preview.png"></div>
     </div>
@@ -47,11 +47,10 @@
     <div id="saiba-mais" class="container-saiba-mais">
         <div class="texto-saiba-mais">
             <h1 class="titulo-saiba-mais">Saiba mais</h1>
-            <h7>Nesta plataforma, ao se cadastrar você terá um questionário sobre suas experiências com seu cabelo
-                cabelo, e a partir
-                disso irei apresentar algumas dicas e recomendações de
-                produtos para cuidá-lo da melhor maneira, sendo um incentivo para
-                aquelas pessoas que alisam seus cabelos a se libertarem e assumirem seus cabelos naturais.<br><br>
+            <h7>Nesta plataforma, apresentarei algumas dicas para cuidar de seu cabelo cacheado da melhor maneira, sendo um incentivo para
+                aquelas pessoas que alisam seus cabelos a se libertarem e assumirem seus cabelos naturais,
+                e ao você realizar seu cadastro você terá um quiz para testar seus conhecimentos adquiridos na página e uma dashboard para visualizar sua evolução no quiz.
+                <br><br>
 
                 Além disso, o projeto “Let Curly” aborda três objetivos sustentáveis da ONU: Saúde e bem-estar,
                 Consumo e produção responsáveis e Redução das desigualdades.
@@ -97,18 +96,24 @@
     </div>
 
     <div class="cards">
+        <a href="tiposCachos.html">
         <div class="card">
-            <img class="img-card" src="../img/locao.png" alt=""><br>
-            <h6 class="titulo-card">Indicação de Produtos</h6>
+            <img class="img-card" src="../img/mulher.png" alt=""><br>
+            <h6 class="titulo-card">Tipos<br>de Cachos</h6>
         </div>
+        </a>
+        <a href="transicaoCapilar.html">
+            <div class="card">
+                <img class="img-card" src="../img/pente.png" alt=""><br>
+                <h6 class="titulo-card">Dicas para Transição Capilar</h6>
+            </div>
+        </a>
+        <a href="cuidados.html">
         <div class="card">
             <img class="img-card-lavagem" src="../img/lavagem-de-cabelo.png" alt=""><br>
             <h6 class="titulo-card">Dicas<br>de Cuidado</h6>
         </div>
-        <div class="card">
-            <img class="img-card" src="../img/pente-de-cabelo.png" alt=""><br>
-            <h6 class="titulo-card">Tipos de Finalizações</h6>
-        </div>
+    </a>
     </div>
     <div id="sobre-mim" class="container-sobre-mim">
         <div class="texto-sobre-mim">
@@ -129,16 +134,44 @@
         <h1 class="titulo-fale-comigo">Fale Comigo</h1>
         <h4>No que posso te ajudar?</h4><br><br>
         <div class="container-inputs">
-            <p>Nome</p><input type="text" name="" id="input_nome" class="input"><br>
-            <p> Email</p> <input type="text" name="" id="input_email" class="input"><br>
-            <p> Mensagem</p><input type="text" name="" id="input_mensagem" class="input_mensagem"
-                placeholder="Escreva sua mensagem aqui..."><br>
+            <p>Nome</p><input type="text" name="" id="input_nome" class="input"><br><br>
+            <p>Email</p><input type="text" name="" id="input_email" class="input"><br><br>
+            <p>Mensagem</p><input type="text" name="" id="input_mensagem" class="input_mensagem"
+                placeholder="Escreva aqui sua mensagem..."><br>
         </div>
-        <button>Enviar</button>
-        
-
+        <a href="mailto:let.fonsecaa@gmail.com"> <button>Enviar</button>
+        </a>
     </div>
-    <script src="../js/carousel.js"></script>
+    <footer>
+        <a href="#home"><img class="img-logo-footer" src="../img/Logo_Let_Curly-removebg-preview.png" alt=""></a>
+        <ul class="footer-navbar">
+            <a href="#home">
+                <li>Home</li>
+            </a>
+            <a href="#saiba-mais">
+                <li>Saiba mais</li>
+            </a>
+            <a href="#sobre-mim">
+                <li>Sobre mim</li>
+            </a>
+            <a href="#fale-comigo">
+                <li>Fale comigo</li>
+            </a>
+        </ul>
+        <hr class="horizontal-line">
+        <div class="container-final">
+            <p class="footer-escrito">© Let Curly | todos os direitos reservados | 2024</p>
+            <div class="container-img-redes-sociais">
+                <a href="https://www.instagram.com/let.fonsecaa?igsh=ZXozMzZoNnEyZW5p&utm_source=qr"><img class="img-redes-sociais" src="../img/instagram.png" alt=""></a>
+                <a href="https://www.linkedin.com/in/let%C3%ADcia-da-fonseca-santos-902302232?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"> <img class="img-redes-sociais" src="../img/logotipo-do-linkedin.png" alt=""></a>
+                <a href="https://github.com/letfonsecaa"> <img class="img-redes-sociais" src="../img/simbolo github.png" alt=""></a>
+            </div>
+        </div>
+    </footer>
+   
 </body>
-
 </html>
+
+<script src="../js/carousel.js"></script>
+<script src="../js/cadastro.js"></script>
+<script src="../js/login.js"></script>

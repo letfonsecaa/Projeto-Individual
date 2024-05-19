@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poetsen+One&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poetsen+One&display=swap");
+
+
+/* PALETA DE CORES */
+:root {
+    --lilás: #CF96DF;
+    --cinza-basico: #DDE1E6;
+    --cinza-subtitulo: #21272A;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+/* Definições do header */
+.header {
+    font-family: "Dancing Script", cursive;
+    font-optical-sizing: auto;
+    font-size: 25px;
+    font-weight: 1000;
+    font-style: normal;
+
+    color: var(--cinza-subtitulo);
+    background-color: #fff;
+    border-bottom: .0625rem solid #000;
+    padding: .625rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 130px;
+    z-index: 1000;
+
+}
+
+.navbar {
+    width: 30rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    color: black;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar li::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5625rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: .1875rem;
+    background-color: #CF96DF;
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar li:hover::after {
+    width: 100%;
+    /* Aumentando a largura no hover */
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    /* transition: color 0.3s;  */
+    transition: transform 0.3s;
+}
+
+a:hover {
+    color: black;
+    transform: scale(1.1);
+
+}
+
+.header .container {
+    justify-content: space-between;
+}
+
+.img-logo {
+    width: 135px;
+    height: 125px;
+    transition: transform 0.3s ease;
+    /* Transição suave de 0.3 segundos */
+}
+
+.img-logo:hover {
+    transform: translateY(-10px);
+    /* Levantar o card 10 pixels para cima quando hover */
+}
+
+
+button.button-login {
+    background-color: transparent;
+    border: .125rem solid var(--lilás);
+    color: var(--lilás);
+}
+
+button.button-login:hover {
+    background-color: var(--lilás);
+    color: #fff;
+}
+
+button {
+    font-family: "Noto Serif", serif;
+    background-color: var(--lilás);
+    color: #fff;
+    padding: .9375rem 2rem;
+    text-align: center;
+    font-size: 1rem;
+    margin: .625rem 1.375rem;
+    border-radius: .5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: var(--lilás);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.header-button {
+    padding-top: 15px;
+}
+
+.container-principal {
+    width: 1500px;
+}
+
+.container-titulos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+h1 {
+    position: relative;
+    color: #CF96DF;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    margin-top: 150px;
+  
+}
+
+h3 {
+    font-family: "Dancing Script", cursive;
+    color: #000;
+    font-weight: bold;
+    font-size: 30px;
+
+}
+
+.container-textos {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 45px;
+    margin-right: 45px;
+    text-align: justify;
+}
+
+.container-img   {
+    background-color: #CF96DF;
+    width: 700px;
+    height: 400px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top:50px;
+    margin-left: 400px ;
+    margin-right: 310px;
+}
+
+.img-curvaturas  {
+    width: 600px;
+    height: 300px;
+    border-radius: 30px;
+
+
+}
+
+
+::-webkit-scrollbar {
+    width: .625rem;
+    /* largura da barra de rolagem */
+}
+
+/* Estilos para a alça da barra de rolagem */
+::-webkit-scrollbar-thumb {
+    background-color: var(--cinza-basico);
+    /* cor da alça */
+    border-radius: .625rem;
+    /* borda arredondada */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #CF96DF;
+    /* cor da alça quando passa o mouse por cima */
+}
