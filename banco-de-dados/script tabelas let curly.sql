@@ -1,4 +1,4 @@
-drop database letcurly;
+drop database if exists letcurly;
 create database if not exists letcurly;
 use letcurly;
 
