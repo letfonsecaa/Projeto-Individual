@@ -96,15 +96,7 @@
 
     let mensagemErroConfirmSenha = "As senhas devem ser iguais.";
 
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmSenhaVar == "") {
-      document.getElementById("card-erro").style.display = 'block';
-      document.getElementById("mensagem-erro").innerHTML = camposVazios;
-    } else {
-
+    
       /* ------------------- VERIFICAÇÃO DE NOME ------------------ */
 
       if (nomeVar.length >= 3) {
@@ -134,7 +126,7 @@
       // verificando se existem números na senha
 
       for (let contador = 0; contador <= 9; contador++) {
-        if (senhaVar.indexOf(`${contador}`) > -1) {
+        if (senhaVar.indexOf(`${contador}`) >= 0) {
           senhaValidaNumeros = true;
         }
       }
@@ -181,11 +173,17 @@
         document.getElementById("mensagem-erro").innerHTML =
           mensagemEmailInvalido;
       }
-    }
+    
 
     /*  Confirmação de tudo */
-
-    if (nomeValido && emailValido && senhaValida && confirmSenhaValida) {
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmSenhaVar == "") {
+      document.getElementById("card-erro").style.display = 'block';
+      document.getElementById("mensagem-erro").innerHTML = camposVazios;
+    } else if (nomeValido && emailValido && senhaValida && confirmSenhaValida) {
       document.getElementById("card-erro").style.display = 'none';
       document.getElementById("cadastroSucesso").style.display = "flex";
       document.getElementById("cadastroSucesso").style.animation =
@@ -197,7 +195,7 @@
           (document.getElementById("cadastroSucesso").style.display = "none"),
         4900,
       );
-    }
+    
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -240,8 +238,5 @@
     return false;
   }
 
-
-  function sumirMensagem() {
-    cardErro.style.display = "none";
   }
 </script>
