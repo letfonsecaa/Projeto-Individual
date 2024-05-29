@@ -111,7 +111,11 @@ function finishGame() {
     </button>
   `
 
-  fetch("/quiz/cadastrar", {
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+  var idUsuarioVar = sessionStorage.ID_USUARIO;
+
+  fetch("/quiz/obterPontuacao", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -119,8 +123,8 @@ function finishGame() {
     body: JSON.stringify({
       // crie um atributo que recebe o valor recuperado aqui
       // Agora vá para o arquivo routes/usuario.js
-      idUsuarioserver: idUsuario,
-      pontuacaoServer: score
+      fkUsuarioServer: idUsuarioVar,
+      pontuacaoServer: pontuacao
     }),
   })
   .then(function (resposta) {
@@ -129,7 +133,7 @@ function finishGame() {
     if (resposta.ok) {
 
       setTimeout(() => {
-        window.location = "../dashboard.html";
+        window.location = "dashboard.html";
       }, "2000");
 
     } else {

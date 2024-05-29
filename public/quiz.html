@@ -2,56 +2,73 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <script src="./js/sessao.js"></script>
-    <link rel="stylesheet" href="./css/quiz.css">
-    <link rel="shortcut icon" href="./img/Logo_Let_Curly-removebg-preview.png" type="image/x-icon">
-    <title>Let Curly | Quiz</title>
+  <script src="./js/sessao.js"></script>
+  <link rel="stylesheet" href="./css/quiz.css">
+  <link rel="shortcut icon" href="./img/Logo_Let_Curly-removebg-preview.png" type="image/x-icon">
+  <title>Let Curly | Quiz</title>
 </head>
 
 
 <body>
 
-    <div class="header">
+  <!-- <div class="header">
         <div class="container">
             <a href="index.html"> <img class="img-logo" src="./img/Logo_Let_Curly-removebg-preview.png"></a>
             <ul class="navbar">
-                <a href="index.html">
-                    <li>Home</li>
+                <a href="dashboard.html">
+                    <li>Dashboard</li>
                 </a>
                 <a href="index.html">
-                    <li>Saiba mais</li>
-                </a>
-                <a href="index.html">
+                  <li>Sair</li>
+              </a>
+                 <a href="index.html">
                     <li>Sobre mim</li>
                 </a>
                 <a href="index.html">
                     <li>Fale comigo</li>
-                </a>
+                </a> 
             </ul>
         </div>
+    </div> -->
+  <div class="header-lateral">
+    <a href="index.html"> <img class="img-logo" src="./img/Logo_Let_Curly-removebg-preview.png"></a>
+    <div class="hello">
+      <h3>Olá, <span id="b_usuario"></span>!</h3>
     </div>
-    <body>
-    
-      <div class="container-quiz">
-        <div class="questions-container hide">
-          <span class="question">Pergunta aqui?</span>
-          <div class="answers-container">
-            <button class="answer button">Resposta 1</button>
-            <button class="answer button">Resposta 2</button>
-            <button class="answer button">Resposta 3</button>
-            <button class="answer button">Resposta 4</button>
-          </div>
-        </div>
-        <div class="controls-container">
-          <button class="start-quiz button">Começar Quiz!</button>
-          <button class="next-question button hide">Próxima pergunta</button>
+    <a href="quiz.html">
+      <button>Quiz</button>
+    </a>
+    <a href="dashboard.html"> <button>Dashboard</button></a>
+
+    <a href="index.html"><button onclick="limparSessao()" class="button-sair">Sair</button></a>
+  </div>
+
+  <body>
+
+    <div class="container-quiz">
+      <div class="questions-container hide">
+        <span class="question">Pergunta aqui?</span>
+        <div class="answers-container">
+          <button class="answer button">Resposta 1</button>
+          <button class="answer button">Resposta 2</button>
+          <button class="answer button">Resposta 3</button>
+          <button class="answer button">Resposta 4</button>
         </div>
       </div>
-    </body>
-    </html>
-    <script src="./js/quiz.js" async></script>
+      <div class="controls-container">
+        <button class="start-quiz button">Começar Quiz!</button>
+        <button class="next-question button hide">Próxima pergunta</button>
+      </div>
+    </div>
+  </body>
+
+</html>
+<script src="./js/quiz.js" async></script>
+<script>
+  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>

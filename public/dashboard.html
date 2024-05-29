@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="shortcut icon" href="./img/Logo_Let_Curly-removebg-preview.png" type="image/x-icon">
+    <title>Let Curly | Dashboard</title>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="header-lateral">
+            <a href="index.html"> <img class="img-logo" src="./img/Logo_Let_Curly-removebg-preview.png"></a>
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario"></span>!</h3>
+                </div>
+                    <a href="quiz.html">
+                        <button>Quiz</button>
+                    </a>
+                    <a href="dashboard.html"> <button>Dashboard</button></a>
+                   
+                    <a href="index.html"><button  onclick="limparSessao()" class="button-sair">Sair</button></a>
+        </div>
+        <div id="kpi-pontuacao-media" class="kpi-pontuacao-media">
+        </div>
+        <div id="kpi-porcentagem-atual" class="kpi-porcentagem-atual">
+            
+        </div>
+        <div class="graficos">
+
+        </div>
+</div>
+</body>
+</html>
+
+<script>
+      b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>

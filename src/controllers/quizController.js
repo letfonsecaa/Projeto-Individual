@@ -1,30 +1,30 @@
 var quizModel = require("../models/quizModel");
 
-function cadastrar(req, res) {
+function obterPontuacao(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var pontuacao = req.body.pontuacaoServer;
-    var idUsuario = req.body.idUsuarioserver;
+    var fkUsuario = req.body.fkUsuarioServer;
 
     // Faça as validações dos valores
-    if (score == undefined) {
+    if (pontuacao == undefined) {
         res.status(400).send();
-    } else if (usuarioId == undefined) {
+    } else if (fkUsuario == undefined) {
         res.status(400).send();
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        quizModel.cadastrar(pontuacao,idUsuario)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
+        console.log('Obtive Pontuação')
+        quizModel.obterPontuacao(pontuacao,fkUsuario)
+            .then(function (resultado) {
+                if (resultado.length > 0) {
+                    res.status(200).json(resultado);
+                } else {
+                    res.status(204).send("Nenhum resultado encontrado!")
                 }
-            ).catch(
+            }).catch(
                 function (erro) {
                     console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
+                    console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
                     res.status(500).json(erro.sqlMessage);
                 }
             );
@@ -32,5 +32,5 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-    cadastrar
+    obterPontuacao
 }

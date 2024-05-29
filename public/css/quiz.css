@@ -26,8 +26,70 @@
     padding-right: 315px;
     
 }
+.header-lateral {
+  background-color: var(--lilás);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 50px;
+  height: 729px;
 
-/* Definições do header */
+}
+
+.img-logo {
+  width: 135px;
+  height: 125px;
+  transition: transform 0.3s ease;
+  /* Transição suave de 0.3 segundos */
+}
+
+.img-logo:hover {
+  transform: translateY(-10px);
+  /* Levantar o card 10 pixels para cima quando hover */
+}
+
+h3 {
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+button {
+  font-family: "Noto Serif", serif;
+  background-color: #fff;
+  color: var(--lilás);
+  padding: .9375rem 2rem;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin: .625rem 1.375rem;
+  border-radius: .5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: var(--lilás);
+  color: #000;
+  transform: scale(1.1);
+  border: .125rem solid #000;
+}
+
+.button-sair{
+background-color: #000;
+color: #fff;
+}
+
+.button-sair:hover {
+  background-color: #fff;
+  color: #000;
+  transform: scale(1.1);
+}
+/* 
+
 .header {
     font-family: "Dancing Script", cursive;
     font-optical-sizing: auto;
@@ -72,8 +134,8 @@
 
 .navbar li:hover::after {
     width: 100%;
-    /* Aumentando a largura no hover */
-}
+    /* Aumentando a largura no hover 
+}*/
 
 a {
     color: black;
@@ -99,12 +161,14 @@ a:hover {
 .img-logo:hover {
     transform: translateY(-10px);
     /* Levantar o card 10 pixels para cima quando hover */
-}
+} 
+
+
+
 
 body {
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
@@ -117,6 +181,7 @@ body {
     width: 90%;
     max-width: 800px;
     height: 410px;
+    margin-left: 200px;
   
     border: 2px solid #CF96DF;
  
@@ -129,6 +194,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: "Montserrat", sans-serif;
+    
   }
   
   .questions-container {
@@ -201,10 +267,3 @@ body {
     display: none;
   }
   
- /*  .correct {
-    background-color: #69f9aa;
-  }
-  
-  .incorrect {
-    background-color: #e05d5d;
-  } */
