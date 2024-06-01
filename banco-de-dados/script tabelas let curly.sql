@@ -3,18 +3,20 @@ create database if not exists letcurly;
 use letcurly;
 
 create table if not exists usuario (
-idUsuario int primary key auto_increment,
+idUsuario int primary key auto_increment unique key,
 nome varchar(50) not null,
-email varchar(100) not null,
-senha varchar(50) not null
+email varchar(100) not null unique key,
+senha varchar(50) not null 
 );
 
 create table if not exists quiz (
 idQuiz int primary key auto_increment,
 pontuacao int,
 fkUsuario int,
+data_hora datetime default current_timestamp,
 foreign key (fkUsuario) references usuario(idUsuario)
 );
+
 
 
 create table if not exists questao (
@@ -109,12 +111,23 @@ select * from questao;
 select * from quiz;
 
 
-select u.idUsuario, pontuacao
-from quiz q inner join usuario u on q.fkUsuario = u.idUsuario;
+SELECT 
+	    pontuacao as pontos,
+       u.nome as nome
+FROM quiz q INNER JOIN usuario u ON q.fkUsuario = u.idUsuario
+ORDER BY pontos DESC LIMIT 8;
+
+SELECT ROUND(AVG(pontuacao),1) as média from quiz;
+
+    SELECT fkUsuario, 
+    pontuacao as pontos, 
+    DATE_FORMAT(data_hora,'%d/%m/%Y %H:%i') as momento
+    FROM quiz
+    WHERE fkUsuario = fkUsuario
+    ORDER BY momento DESC LIMIT 8;
 
 
 
-
-
-
-
+ 
+    
+ 

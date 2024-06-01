@@ -148,7 +148,7 @@
 
 
 
-      /* ------------------ VERIFICAÇÃO DESCONFIRMAÇÃO DE SENHA ----------------------- */
+      /* ------------------ VERIFICAÇÃO CONFIRMAÇÃO DE SENHA ----------------------- */
 
       if (confirmSenhaVar != senhaVar) {
         document.getElementById("card-erro").style.display = 'block';
@@ -175,7 +175,7 @@
       }
     
 
-    /*  Confirmação de tudo */
+    /*  Confirmação de tudo  */
     if (
       nomeVar == "" ||
       emailVar == "" ||
@@ -184,11 +184,11 @@
       document.getElementById("card-erro").style.display = 'block';
       document.getElementById("mensagem-erro").innerHTML = camposVazios;
     } else if (nomeValido && emailValido && senhaValida && confirmSenhaValida) {
-      document.getElementById("card-erro").style.display = 'none';
+     /*  document.getElementById("card-erro").style.display = 'none';
       document.getElementById("cadastroSucesso").style.display = "flex";
       document.getElementById("cadastroSucesso").style.animation =
         "cadastroComSucesso";
-      document.getElementById("cadastroSucesso").style.animationDuration = "5s";
+      document.getElementById("cadastroSucesso").style.animationDuration = "5s"; */
 
       setTimeout(
         () =>
@@ -217,7 +217,11 @@
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          cadastroSucesso.style.display = "block";
+          document.getElementById("card-erro").style.display = 'none';
+          document.getElementById("cadastroSucesso").style.display = "flex";
+          document.getElementById("cadastroSucesso").style.animation =
+        "cadastroComSucesso";
+      document.getElementById("cadastroSucesso").style.animationDuration = "5s";
 
 
           setTimeout(() => {
@@ -228,6 +232,7 @@
           finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
+
         }
       })
       .catch(function (resposta) {

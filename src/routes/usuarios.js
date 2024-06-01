@@ -12,4 +12,17 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/obterPontuacao", function (req, res) {
+    usuarioController.obterPontuacao(req, res);
+})
+
+router.get("/obterPontos", function (req, res) {
+    usuarioController.obterPontos(req, res);
+});
+
+router.get("/obterMedia", function (req, res) {
+    usuarioController.obterMedia(req, res);
+});
+
+
 module.exports = router;

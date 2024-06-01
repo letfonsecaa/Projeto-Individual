@@ -42,6 +42,7 @@
                 <p>Email</p><input type="text"  id="input_email" class="input"><br><br>
                 <p>Senha</p><input type="text"  id="input_senha" class="input"><br><br>
             </div>
+            <span id="mensagemErro" class="mensagemErro">Email ou senha inválida!</span>
             <button class="button-login"   onclick="entrar()">Login</button>
             <div class="container-possui-cadastro"><h4>Já possui cadastro?</h4><br><a href="cadastro.html"><button class="button-cadastre">Cadastre-se</button></a>
             </div>
@@ -93,10 +94,11 @@
                     }, 1000); // apenas para exibir o loading
 
                 });
+                document.getElementById("mensagemErro").style.display = "none";
 
             } else {
 
-               /*  adicionar card-erro que precisa de cadastrar, não existe aquele usuario no banco de dado */
+                document.getElementById("mensagemErro").style.display = "flex";
 
                 console.log("Houve um erro ao tentar realizar o login!");
 
@@ -112,7 +114,4 @@
 
         return false;
     }
-
-
-
 </script>

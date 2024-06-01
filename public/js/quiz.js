@@ -111,11 +111,12 @@ function finishGame() {
     </button>
   `
 
+
   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
   var idUsuarioVar = sessionStorage.ID_USUARIO;
 
-  fetch("/quiz/obterPontuacao", {
+  fetch("/usuarios/obterPontuacao", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -124,7 +125,8 @@ function finishGame() {
       // crie um atributo que recebe o valor recuperado aqui
       // Agora vá para o arquivo routes/usuario.js
       fkUsuarioServer: idUsuarioVar,
-      pontuacaoServer: pontuacao
+      pontuacaoServer: pontuacao,
+  
     }),
   })
   .then(function (resposta) {
