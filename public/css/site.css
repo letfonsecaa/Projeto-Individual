@@ -419,9 +419,10 @@ span {
 }
 
 .container-fale-comigo {
-    width: 1526px;
+    width: 1400px;
     height: 830px;
     text-align: center;
+    margin: 50px;
 }
 
 .titulo-fale-comigo {

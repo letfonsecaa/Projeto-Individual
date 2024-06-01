@@ -88,54 +88,7 @@ color: #fff;
   color: #000;
   transform: scale(1.1);
 }
-/* 
 
-.header {
-    font-family: "Dancing Script", cursive;
-    font-optical-sizing: auto;
-    font-size: 25px;
-    font-weight: 1000;
-    font-style: normal;
-    color: var(--cinza-subtitulo);
-    background-color: #fff;
-    border-bottom: .0625rem solid #000;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 115px;
-    z-index: 1000;
-
-}
-
-.navbar {
-    width: 30rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    color: black;
-}
-
-.navbar li {
-    position: relative;
-}
-
-.navbar li::after {
-    content: '';
-    position: absolute;
-    bottom: -0.5625rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: .1875rem;
-    background-color: #CF96DF;
-    transition: width 0.3s ease-in-out;
-}
-
-.navbar li:hover::after {
-    width: 100%;
-    /* Aumentando a largura no hover 
-}*/
 
 a {
     color: black;
