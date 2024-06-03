@@ -1,107 +1,100 @@
-const $startGameButton = document.querySelector(".start-quiz")
-const $nextQuestionButton = document.querySelector(".next-question")
-const $questionsContainer = document.querySelector(".questions-container")
-const $questionText = document.querySelector(".question")
-const $answersContainer = document.querySelector(".answers-container")
-const $answers = document.querySelectorAll(".answer")
+const comecarQuizButton = document.querySelector(".comecar-quiz")   
+const proximaQuestaoButton = document.querySelector(".proxima-questao")
+const questaoContainer = document.querySelector(".questao-container")
+const questaoTexto = document.querySelector(".questao")
+const respostasContainer = document.querySelector(".respostas-container") 
+const respostas = document.querySelectorAll(".respostas")
 
 let idUsuario = sessionStorage.ID_USUARIO
 
-let currentQuestionIndex = 0
+let perguntaAtual = 0
 let pontuacao = 0
 
-$startGameButton.addEventListener("click", startGame)
-$nextQuestionButton.addEventListener("click", displayNextQuestion)
+comecarQuizButton.addEventListener("click", iniciarQuiz) // captura o evendo de clique do botão para iniciar o quiz
+proximaQuestaoButton.addEventListener("click", proximaPergunta)
 
-function startGame() {
-  $startGameButton.classList.add("hide")
-  $questionsContainer.classList.remove("hide")
-  displayNextQuestion()
+function iniciarQuiz() {
+  comecarQuizButton.classList.add("hide") // desaparece o botão começar quiz quando clicar nele
+  questaoContainer.classList.remove("hide") // retira a classe hide do container das perguntas e assim aparece as perguntas quando clica no botão começar quiz
+  proximaPergunta()
 }
 
-function displayNextQuestion() {
-  resetState()
+function proximaPergunta() {
+  removerRespostasAnteriores()
   
-  if (questions.length === currentQuestionIndex) {
-    return finishGame()
+  if (perguntas.length === perguntaAtual) { // verificação se está na ultima pergunta e se sim irá para a função do final do quiz,
+                                            // e o return é para não rodar o resto da função proximaPergunta caso entre no if
+    return finalQuiz()
   }
 
-  $questionText.textContent = questions[currentQuestionIndex].question
-  questions[currentQuestionIndex].answers.forEach(answer => {
-    const newAsnwer = document.createElement("button")
-    newAsnwer.classList.add("button", "answer")
-    newAsnwer.textContent = answer.text
-    if (answer.correct) {
-      newAsnwer.dataset.correct = answer.correct
-    }
-    $answersContainer.appendChild(newAsnwer)
+  questaoTexto.textContent = perguntas[perguntaAtual].pergunta //exibe a pergunta atual
+  perguntas[perguntaAtual].respostas.forEach(respostas => { 
+    const novaResposta = document.createElement("button") // elemento button para cada resposta 
 
-    newAsnwer.addEventListener("click", selectAnswer)
+    novaResposta.classList.add("button", "respostas") //adicionando as duas classes das respostas
+
+    novaResposta.textContent = respostas.text 
+    if (respostas.correct) {                                 /* verificação para saber se a resposta é a correta, no caso a variavel correct igual true,
+                                                            se for capturamos essa informação pelo dataset para verificar se o usuário escolheu a questão correta */
+    novaResposta.dataset.correct = respostas.correct 
+    }
+    respostasContainer.appendChild(novaResposta) // adicionar o elemento novaResposta no container respostasContainer
+
+    novaResposta.addEventListener("click", respostaEscolhida) //ouvidor de eventos tipo clique para quando o usuario clicá-la roda a função respostaEscilhinda
   })
 }
 
-function resetState() {
-  while($answersContainer.firstChild) {
-    $answersContainer.removeChild($answersContainer.firstChild)
+function removerRespostasAnteriores() { // função para remover a pergunta anterior, e aparecer a nova questão
+  while(respostasContainer.firstChild) { // o while vai executar uma operação enquanto a condição nele descrita não for verdadeira. 
+    
+   respostasContainer.removeChild(respostasContainer.firstChild)  /* se tem o elemento filho (respostas) no container (respostas-container) irá removê-lo até 
+                                                                    que o container não tenha mais nenhuma resposta*/
   }
-
-  document.body.removeAttribute("class")
-  $nextQuestionButton.classList.add("hide")
+  proximaQuestaoButton.classList.add("hide") // desaparece o botão de próxima pergunta quando é avançado para próxima pergunta
 }
 
-function selectAnswer(event) {
-  const answerClicked = event.target
+function respostaEscolhida(event) {
+  const respostaClicada = event.target  // o even retorna qual foi o botão clicado 
 
-  if (answerClicked.dataset.correct) {
-    document.body.classList.add("correct")
+  if (respostaClicada.dataset.correct) {   // verificação se caso o usuário escolha a resposta correta é adicionado 1 ponto na contagem da pontuação
     pontuacao++
-  } else {
-    document.body.classList.add("incorrect") 
   } 
 
-  document.querySelectorAll(".answer").forEach(button => {
-    button.disabled = true
+  document.querySelectorAll(".respostas").forEach(button => {
+    button.disabled = true // desabilita  o click nos botões quando o usuário já escolheu a sua resposta
 
-    if (button.dataset.correct) {
-      button.classList.add("correct")
-    } else {
-      button.classList.add("incorrect")
-    }
   })
   
-  $nextQuestionButton.classList.remove("hide")
-  currentQuestionIndex++
+  proximaQuestaoButton.classList.remove("hide") // remove a classe hide quando o usuário já escolheu a resposta, e assim retorna o botão de próxima pergunta
+  perguntaAtual++
 }
 
-function finishGame() {
-  const totalQuestions = questions.length
-  const performance = Math.floor(pontuacao * 100 / totalQuestions)
+function finalQuiz() {
+  const totalPerguntas= perguntas.length
+  const performance = Math.floor(pontuacao * 100 / totalPerguntas)
   
-  let message = "";
+  let mensagem = "";
   let color = "green";
 
-  switch (true) {
-    case (performance >= 90):
-      message = "Excelente :)"
-      break
-    case (performance >= 70):
-      message = "Muito bom :)"
-      break
-    case (performance >= 50):
-    color = "red";
-      message = "Bom"
-      break
-    default:
-      color = "red";
-      message = "Pode melhorar :("
-  }
+  
+  if(performance >= 90) {
+    mensagem= "Excelente :)"
+  } else if(performance >= 70) {
+    mensagem = "Muito bom :)"
+ } else if (performance >= 50) {
+  color = "red";
+  mensagem = "Bom"
+ } else {
+  color = "red";
+  mensagem = "Pode melhorar :("
+ }
 
-  $questionsContainer.innerHTML = 
+  questaoContainer.innerHTML = 
   `
-    <div class="final-message">
-      Você acertou <p style="color:${color}; font-size:40px;">${pontuacao}</p> de ${totalQuestions} questões!<br>
+    <div class="mensagem-final">
+      Você acertou <p style="color:${color}; font-size:40px;">${pontuacao}</p> de ${totalPerguntas} questões!<br>
       Sua performace foi de <br><br><p style="color:${color}; font-size:40px;">${performance}%</p><br>
-      <span>Resultado: ${message}</span>
+      <span>Resultado: ${mensagem}</span>
     </div>
     <button 
       onclick=window.location.reload() 
@@ -147,12 +140,12 @@ function finishGame() {
   });
 }
 
+// Lista das perguntas e suas possiveis respostas feita com array(vetor)
 
-
-const questions = [
+const perguntas = [
   {
-    question: "1) Qual é o objetivo da transição capilar?",
-    answers: [
+    pergunta: "1) Qual é o objetivo da transição capilar?",
+    respostas: [
       { text: "Mudar o padrão de beleza predominante", correct: false },
       { text: "Promover o uso de procedimentos químicos nos cabelos", correct: false },
       { text: "Permitir que os cabelos naturais cresçam", correct: true },
@@ -160,8 +153,8 @@ const questions = [
     ]
   },
   {
-    question: "2) O que é o Big Chop durante a transição capilar?",
-    answers: [
+    pergunta: "2) O que é o Big Chop durante a transição capilar?",
+    respostas: [
       { text: "Um corte radical para remover partes alisadas dos fios", correct: true },
       { text: "Um estilo de penteado", correct: false },
       { text: "Uma técnica de texturização", correct: false },
@@ -169,8 +162,8 @@ const questions = [
     ]
   },
   {
-    question: '3) Quais são os desafios comuns enfrentados durante a transição capilar?',
-    answers: [
+    pergunta: '3) Quais são os desafios comuns enfrentados durante a transição capilar?',
+    respostas: [
       { text: 'Crescimento dos fios, dualidade de texturas e fragilidade capilar', correct: true },
       { text: 'Tons de cabelo, estilos de penteados e tipos de produtos', correct: false },
       { text: 'Comprimento dos fios, cor natural e densidade capilar', correct: false },
@@ -178,8 +171,8 @@ const questions = [
     ]
   },
   {
-    question: '4) Qual é a melhor estratégia para lidar com a dupla textura durante a transição capilar?',
-    answers: [
+    pergunta: '4) Qual é a melhor estratégia para lidar com a dupla textura durante a transição capilar?',
+    respostas: [
       { text: "Penteados como tranças e coques", correct: true },
       { text: "Aumentar a frequência de lavagem dos cabelos", correct: false },
       { text: " Aplicar produtos químicos para alisar os fios", correct: false },
@@ -187,8 +180,8 @@ const questions = [
     ]
   },
   {
-    question: '5) Qual técnica é usada para definir os cachos de forma mais estruturada?',
-    answers: [
+    pergunta: '5) Qual técnica é usada para definir os cachos de forma mais estruturada?',
+    respostas: [
       { text: 'Dedoliss', correct: false },
       { text: ' Twist', correct: false },
       { text: 'Plopping', correct: false },
@@ -196,8 +189,8 @@ const questions = [
     ]
   },
   {
-    question: '6) O que envolve a técnica de "Dedoliss"?',
-    answers: [
+    pergunta: '6) O que envolve a técnica de "Dedoliss"?',
+    respostas: [
       { text: 'Separar o cabelo em mechas finas e aplicar um creme de pentear', correct: false },
       { text: ' Enrolar pequenas seções de cabelo em coques', correct: true },
       { text: 'Torcer duas mechas de cabelo uma sobre a outra', correct: false },
@@ -205,8 +198,8 @@ const questions = [
     ]
   },
   {
-    question: '7) Qual é a importância de cortar periodicamente as partes alisadas dos cabelos durante a transição capilar?',
-    answers: [
+    pergunta: '7) Qual é a importância de cortar periodicamente as partes alisadas dos cabelos durante a transição capilar?',
+    respostas: [
       { text: 'Para aumentar a fragilidade capilar', correct: false },
       { text: 'Para manter a dupla textura dos fios', correct: false },
       { text: 'Para manter a diversidade de texturas nos cabelos', correct: false },
@@ -214,8 +207,8 @@ const questions = [
     ]
   },
   {
-    question: '8) Por que é recomendado não lavar os cabelos cacheados todos os dias?',
-    answers: [
+    pergunta: '8) Por que é recomendado não lavar os cabelos cacheados todos os dias?',
+    respostas: [
       { text: 'Para aumentar a oleosidade natural dos fios', correct: false },
       { text: ' Porque cabelos cacheados não precisam de hidratação', correct: false },
       { text: 'Para evitar ressecamento dos fios, especialmente as pontas', correct: true },
@@ -224,8 +217,8 @@ const questions = [
   },
 
   {
-    question: '9) Qual é a recomendação para secar os cabelos cacheados?',
-    answers: [
+    pergunta: '9) Qual é a recomendação para secar os cabelos cacheados?',
+    respostas: [
       { text: ' Secar com uma toalha de banho', correct: false },
       { text: 'Deixar os cabelos secarem naturalmente', correct: true },
       { text: ' Utilizar um secador em temperatura alta', correct: false },
@@ -234,8 +227,8 @@ const questions = [
   },
 
   {
-    question: '10) Qual é o principal objetivo do cronograma capilar?',
-    answers: [
+    pergunta: '10) Qual é o principal objetivo do cronograma capilar?',
+    respostas: [
       { text: 'Hidratar, nutrir e reconstruir os fios', correct: true },
       { text: 'Promover a mudança de textura dos cabelos', correct: false },
       { text: ' Manter os cabelos úmidos o tempo todo', correct: false },

@@ -1,4 +1,4 @@
-drop database if exists letcurly;
+-- drop database if exists letcurly;
 create database if not exists letcurly;
 use letcurly;
 
@@ -13,7 +13,6 @@ create table if not exists quiz (
 idQuiz int primary key auto_increment,
 pontuacao int,
 fkUsuario int,
-data_hora datetime default current_timestamp,
 foreign key (fkUsuario) references usuario(idUsuario)
 );
 
@@ -26,7 +25,7 @@ alternativa_a varchar(500) not null,
 alternativa_b varchar(500) not null,
 alternativa_c varchar(500) not null,
 alternativa_d varchar(500) not null,
-correta enum ('a', 'b', 'c','d'),
+correta char(1) not null check (correta in ('a', 'b', 'c', 'd')),
 fk_quiz int,
 foreign key (fk_quiz) references quiz(idQuiz)
 );
@@ -118,13 +117,6 @@ FROM quiz q INNER JOIN usuario u ON q.fkUsuario = u.idUsuario
 ORDER BY pontos DESC LIMIT 8;
 
 SELECT ROUND(AVG(pontuacao),1) as média from quiz;
-
-    SELECT fkUsuario, 
-    pontuacao as pontos, 
-    DATE_FORMAT(data_hora,'%d/%m/%Y %H:%i') as momento
-    FROM quiz
-    WHERE fkUsuario = fkUsuario
-    ORDER BY momento DESC LIMIT 8;
 
 
 
