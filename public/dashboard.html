@@ -27,15 +27,23 @@
                 <h3>Olá, <span id="b_usuario"></span>!</h3>
             </div>
             <a href="quiz.html">
-                <button>Quiz</button>
+                <button>Refazer quiz</button>
             </a>
             <a href="dashboard.html"> <button>Dashboard</button></a>
-
             <a href="index.html"><button onclick="limparSessao()" class="button-sair">Sair</button></a>
         </div>
+        <div id="kpiMelhorJogador" class="kpi-melhor-jogador">
+            <p class="tituloMedia">1° lugar no Quiz</p>
+            <p id="melhorJogador" class="mediaPontos"></p>
+        </div>
         <div id="kpiMedia" class="kpi-pontuacao-media">
-            <p class="tituloMedia">Média das Pontuações</p>
+            <p class="tituloMedia">Média geral das Pontuações</p>
             <p id="mediaPontos" class="mediaPontos"></p>
+        </div>
+        <div id="kpiPosicaoRanking" class="kpi-posicao-ranking">
+            <p class="tituloMedia">Sua posição no ranking</p>
+            <p id="posicaoRanking" class="mediaPontos">
+            </p>
         </div>
     <div class="graficos" id="graficos">
         <canvas id="chart_quiz"></canvas>
@@ -48,7 +56,9 @@
 <script>
        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
       
- 
+       var usuario = sessionStorage.NOME_USUARIO;
+
+
        function obterDados() {
     console.log()
     fetch(`/usuarios/obterPontos`, { cache: 'no-store' }).then(function (response) {
@@ -94,11 +104,25 @@ function plotarGrafico(resposta) {
      // Ordenar os dados em ordem decrescente com base nos pontos
      resposta.sort((a, b) => b.pontos - a.pontos);
 
+   
+
     for (i = 0; i < resposta.length; i++) {
         var registro = resposta[i];
         users.push(registro.nome);
         pontuacao.datasets[0].data.push(registro.pontos);
-    }
+    } 
+
+    let melhorJogador = resposta[0].nome;
+
+     document.getElementById('melhorJogador').innerHTML = `${melhorJogador}`; 
+
+    let posicao = (users.indexOf(usuario) + 1) 
+  
+    posicaoRanking.innerHTML = `${posicao}° Lugar`
+    
+   
+
+      
 
     console.log('----------------------------------------------')
     console.log('O gráfico será plotado com os respectivos valores:')
@@ -149,9 +173,6 @@ function obterMedia(resposta) {
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
-
-      
-
 }
 obterMedia();
 
@@ -162,9 +183,9 @@ function exibirMedia(resposta) {
         var registro = resposta[i];
         media.push(registro.media);
     }
- 
+ // Exibe a última média calculada pelo banco, no caso a última posição da lista de valores da média
     mediaPontos.innerHTML = `${media[resposta.length-1]}`; 
-
-
 }
+
+
 </script>

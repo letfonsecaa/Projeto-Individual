@@ -127,7 +127,9 @@ body {
     font-weight: bold;
   }
 
-
+  .hello {
+    font-size: 30px;
+}
   
   .container-quiz {
     background-color: #fff;

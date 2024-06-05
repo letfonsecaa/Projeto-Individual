@@ -145,10 +145,15 @@ function obterMedia(req, res) {
             }
         );
 }
+
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
     obterPontuacao,
     obterPontos,
-    obterMedia
+    obterMedia,
+   
 }

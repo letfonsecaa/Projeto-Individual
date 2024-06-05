@@ -94,23 +94,44 @@ button:hover {
     font-size: 30px;
 }
 
-.kpi-pontuacao-media {
-    grid-area: 1 / 2 / 3 / 6;
+.kpi-melhor-jogador {
+    grid-area: 1 / 2 / 3 / 3;
     background-color: var(--cinza-basico);
     text-align: center;
     border-radius: 30px;
     margin-top: 20px;
     margin-left: 100px;
     padding: 20px;
+    margin-bottom: -5px;
 }
 
+.kpi-pontuacao-media {
+    grid-area: 1 / 5 / 3 / 6;
+    background-color: var(--cinza-basico);
+    text-align: center;
+    border-radius: 30px;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding: 20px;
+    margin-bottom: -5px;
+}
+
+.kpi-posicao-ranking {
+    grid-area: 1 / 3 / 3 / 5;
+    background-color: var(--cinza-basico);
+    text-align: center;
+    border-radius: 30px;
+    margin-top: 20px;
+    margin-left: 50px;
+    padding: 20px;
+}
 
 
 .tituloMedia {
     color: #CF96DF;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
 }
 

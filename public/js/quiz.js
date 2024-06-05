@@ -140,6 +140,8 @@ function finalQuiz() {
   });
 }
 
+
+
 // Lista das perguntas e suas possiveis respostas feita com array(vetor)
 
 const perguntas = [
@@ -173,26 +175,26 @@ const perguntas = [
   {
     pergunta: '4) Qual é a melhor estratégia para lidar com a dupla textura durante a transição capilar?',
     respostas: [
-      { text: "Penteados como tranças e coques", correct: true },
       { text: "Aumentar a frequência de lavagem dos cabelos", correct: false },
       { text: " Aplicar produtos químicos para alisar os fios", correct: false },
+      { text: "Penteados como tranças e coques", correct: true },
       { text: "Alisar regularmente os cabelos com chapinha", correct: false }
     ]
   },
   {
     pergunta: '5) Qual técnica é usada para definir os cachos de forma mais estruturada?',
     respostas: [
-      { text: 'Dedoliss', correct: false },
+      { text: 'Dedoliss', correct: true },
       { text: ' Twist', correct: false },
       { text: 'Plopping', correct: false },
-      { text: 'Fitagem', correct: true }
+      { text: 'Fitagem', correct: false }
     ]
   },
   {
     pergunta: '6) O que envolve a técnica de "Dedoliss"?',
     respostas: [
       { text: 'Separar o cabelo em mechas finas e aplicar um creme de pentear', correct: false },
-      { text: ' Enrolar pequenas seções de cabelo em coques', correct: true },
+      { text: ' Enrolar pequenas seções de cabelo com os dedos', correct: true },
       { text: 'Torcer duas mechas de cabelo uma sobre a outra', correct: false },
       { text: ' Utilizar chapinha para criar ondas suaves', correct: false }
     ]
