@@ -222,3 +222,11 @@ body {
     display: none;
   }
   
+.correct {
+
+  background-color:rgb(155, 237, 155);
+}
+
+.incorrect {
+  background-color: rgb(237, 155, 155);
+}

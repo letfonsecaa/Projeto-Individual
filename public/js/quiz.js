@@ -13,6 +13,7 @@ let pontuacao = 0
 comecarQuizButton.addEventListener("click", iniciarQuiz) // captura o evendo de clique do botão para iniciar o quiz
 proximaQuestaoButton.addEventListener("click", proximaPergunta)
 
+
 function iniciarQuiz() {
   comecarQuizButton.classList.add("hide") // desaparece o botão começar quiz quando clicar nele
   questaoContainer.classList.remove("hide") // retira a classe hide do container das perguntas e assim aparece as perguntas quando clica no botão começar quiz
@@ -22,10 +23,12 @@ function iniciarQuiz() {
 function proximaPergunta() {
   removerRespostasAnteriores()
   
-  if (perguntas.length === perguntaAtual) { // verificação se está na ultima pergunta e se sim irá para a função do final do quiz,
-                                            // e o return é para não rodar o resto da função proximaPergunta caso entre no if
-    return finalQuiz()
+  if (perguntas.length === perguntaAtual) {
+                                            /*  verificação se está na ultima pergunta e se sim irá para a função do final do quiz,
+                                            e o return é para não rodar o resto da função proximaPergunta caso entre no if */
+  return finalQuiz()
   }
+    
 
   questaoTexto.textContent = perguntas[perguntaAtual].pergunta //exibe a pergunta atual
   perguntas[perguntaAtual].respostas.forEach(respostas => { 
@@ -56,13 +59,18 @@ function removerRespostasAnteriores() { // função para remover a pergunta ante
 function respostaEscolhida(event) {
   const respostaClicada = event.target  // o even retorna qual foi o botão clicado 
 
-  if (respostaClicada.dataset.correct) {   // verificação se caso o usuário escolha a resposta correta é adicionado 1 ponto na contagem da pontuação
+  if (respostaClicada.dataset.correct) { // verificação se caso o usuário escolha a resposta correta é adicionado 1 ponto na contagem da pontuação
     pontuacao++
   } 
 
   document.querySelectorAll(".respostas").forEach(button => {
     button.disabled = true // desabilita  o click nos botões quando o usuário já escolheu a sua resposta
-
+    
+    if(button.dataset.correct) {
+      button.classList.add('correct')
+    } else {
+      button.classList.add('incorrect')
+    }
   })
   
   proximaQuestaoButton.classList.remove("hide") // remove a classe hide quando o usuário já escolheu a resposta, e assim retorna o botão de próxima pergunta
@@ -155,16 +163,7 @@ const perguntas = [
     ]
   },
   {
-    pergunta: "2) O que é o Big Chop durante a transição capilar?",
-    respostas: [
-      { text: "Um corte radical para remover partes alisadas dos fios", correct: true },
-      { text: "Um estilo de penteado", correct: false },
-      { text: "Uma técnica de texturização", correct: false },
-      { text: "Um método para alisar temporariamente os cabelos", correct: false }
-    ]
-  },
-  {
-    pergunta: '3) Quais são os desafios comuns enfrentados durante a transição capilar?',
+    pergunta: '2) Quais são os desafios comuns enfrentados durante a transição capilar?',
     respostas: [
       { text: 'Crescimento dos fios, dualidade de texturas e fragilidade capilar', correct: true },
       { text: 'Tons de cabelo, estilos de penteados e tipos de produtos', correct: false },
@@ -173,12 +172,21 @@ const perguntas = [
     ]
   },
   {
-    pergunta: '4) Qual é a melhor estratégia para lidar com a dupla textura durante a transição capilar?',
+    pergunta: '3) Qual é a melhor estratégia para lidar com a dupla textura durante a transição capilar?',
     respostas: [
       { text: "Aumentar a frequência de lavagem dos cabelos", correct: false },
       { text: " Aplicar produtos químicos para alisar os fios", correct: false },
       { text: "Penteados como tranças e coques", correct: true },
       { text: "Alisar regularmente os cabelos com chapinha", correct: false }
+    ]
+  },
+  {
+    pergunta: "4) Qual é o melhor cuidado para diminuir o frizz e o ressecamento dos cabelos cacheados?",
+    respostas: [
+      { text: "Umectação com óleo capilar", correct: true },
+      { text: "Lavar o cabelo com água quente", correct: false },
+      { text: "Passar mais creme de pentear", correct: false },
+      { text: "Pentear o cabelo seco", correct: false }
     ]
   },
   {

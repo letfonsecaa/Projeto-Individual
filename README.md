@@ -1,4 +1,3 @@
-
 ![Logo](./public/img/Logo_Let_Curly-removebg-preview.png)
 
 # Let Curly 
@@ -18,15 +17,18 @@ você terá um quiz para testar seus conhecimentos adquiridos na página.<br>
 ![badge](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![badge](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 ![badge](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![badge](https://camo.githubusercontent.com/f996ba13438a760e2fec7c94150c4706ceab1ceff16a9ca69896c8cbce0105d6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f63686172742e6a732d4635373838442e7376673f7374796c653d666f722d7468652d6261646765266c6f676f3d63686172742e6a73266c6f676f436f6c6f723d7768697465)
 
 ## Instalação local:
 
 ### Requisitos:
+![badge](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)
 ![badge](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 ![badge](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 
 
-## Passo a passo para o acessar a plataforma
+
+## Passo a passo para acessar a plataforma
  1. Clone este repositório em sua máquina
 
 2. Crie o database no seu servidor de banco local com o <a href="./src/database/script-tabelas.sql">script</a>.
