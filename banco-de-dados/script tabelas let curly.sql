@@ -29,4 +29,3 @@ FROM quiz q INNER JOIN usuario u ON q.fkUsuario = u.idUsuario
 ORDER BY pontos DESC LIMIT 8;
 
 SELECT ROUND(AVG(pontuacao),1) as média from quiz;
-

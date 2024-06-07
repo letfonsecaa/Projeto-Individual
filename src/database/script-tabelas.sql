@@ -37,14 +37,9 @@ ORDER BY pontos DESC LIMIT 8;
 
 SELECT ROUND(AVG(pontuacao),1) as média from quiz;
 
-select round((pontuacao * 100) / 10) as porcentagem_acertos from quiz where idQuiz = idQuiz;
 
-/*     SELECT fkUsuario, 
-    pontuacao as pontos, 
-    DATE_FORMAT(data_hora,'%d/%m/%Y %H:%i') as momento
-    FROM quiz
-    WHERE fkUsuario = fkUsuario
-    ORDER BY momento DESC LIMIT 8; */
+
+
 
 
 

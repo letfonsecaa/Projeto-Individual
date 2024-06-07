@@ -232,7 +232,6 @@ span {
     width: 400px;
     height: 410px;
     overflow: hidden;
-    font-family: "Noto Serif", serif;
     padding-top: 115px;
     padding-left: 100px;
 }
@@ -335,6 +334,49 @@ span {
     background-color: #fff;
 }
 
+.slider-img-eu {
+    margin: 0 auto;
+    width: 500px;
+    height: 510px;
+    overflow: hidden;
+    padding: 40px 0px 0 50px;
+  
+}
+
+.slides-img-eu{
+    height: 510px;
+    display: flex;
+}
+
+.slides-img-eu input {
+    display: none;
+}
+
+.slide1 {
+    width: 100%;
+    position: relative;
+}
+
+
+.slide1 img {
+    width: 416px;
+ 
+}
+
+.img-perfil {
+    width: 416px;
+    height: 432px;
+    border-radius: 30px;
+} 
+
+.img-perfil1 {
+    width: 416px;
+    height: 432px;
+    border-radius: 30px;
+    margin-left: 100px;
+}
+
+
 .cards {
     display: flex;
     justify-content: space-around;
@@ -407,16 +449,7 @@ span {
     font-size: 20px;
 }
 
-.img-perfil {
-    width: 416px;
-    height: 432px;
-    border-radius: 50px;
-}
 
-.div-img-perfil {
-    padding-top: 50px;
-    padding-left: 150px;
-}
 
 .container-fale-comigo {
     width: 1400px;
@@ -441,36 +474,6 @@ h4 {
 
 }
 
-
-.container-inputs {
-    width: 560px;
-    height: 450px;
-    flex-direction: column;
-    padding-left: 500px;
-
-}
-
-
-input {
-    width: 560px;
-    height: 48px;
-    border: 2px solid #CF96DF;
-    box-shadow: 0px 0px 10px var(--cinza-basico);
-}
-
-.input_mensagem::placeholder {
-    position: absolute;
-    margin: 5px;
-    top: 0;
-    left: 0;
-}
-
-.input_mensagem {
-    width: 560px;
-    height: 180px;
-    
-
-}
 
 p {
     padding-left: 15px;
@@ -545,20 +548,18 @@ li {
     padding: 10px;
 }
 
+/* Barra de rolagem */
+
 ::-webkit-scrollbar {
     width: .625rem;
-    /* largura da barra de rolagem */
 }
 
-/* Estilos para a alça da barra de rolagem */
+
 ::-webkit-scrollbar-thumb {
     background-color: var(--cinza-basico);
-    /* cor da alça */
     border-radius: .625rem;
-    /* borda arredondada */
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background-color: #CF96DF;
-    /* cor da alça quando passa o mouse por cima */
 }
